@@ -10,7 +10,7 @@ public class ConnectionFactory {
 
     public static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
     public static final String USER = "hr";
-    public static final String PASS = "ORACLE";
+    public static final String PASS = "oracle";
 
     public static Connection getConnection() throws ClassNotFoundException {
         try {
