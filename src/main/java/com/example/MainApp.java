@@ -9,7 +9,7 @@ public class MainApp {
 
     //  Database credentials
     static final String USER = "hr";
-    static final String PASS = "ORACLE";
+    static final String PASS = "oracle";
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
