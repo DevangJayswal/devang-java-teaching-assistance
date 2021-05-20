@@ -5,23 +5,6 @@ Please note that projects are created using maven. I have used IntelliJ Communit
 
 Please follow the tutorial in this order.
 
-[1. Basic JDBC Example](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-demo "Google's Homepage")
+[1. Basic JDBC Example](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-demo "jdbc-demo")
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
+[2. JDBC Example using DAO (Data Access Object) Pattern](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-dao-example "jdbc-dao-example")
