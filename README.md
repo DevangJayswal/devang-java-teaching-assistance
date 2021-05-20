@@ -3,10 +3,9 @@ You can find different examples in separate branches. Please checkout the branch
 
 Please note that projects are created using maven. I have used IntelliJ Community IDE for creation.
 
+Please follow the tutorial in this order.
 
-[I'm an inline-style link](https://www.google.com)
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+[1. Basic JDBC Example](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-demo "Google's Homepage")
 
 [I'm a reference-style link][Arbitrary case-insensitive reference text]
 
