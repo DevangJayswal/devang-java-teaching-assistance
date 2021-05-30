@@ -1,7 +1,6 @@
 # Welcome Java Nuts.
 
-You can find different examples in separate branches. Please checkout the branches.
-
+You can find different examples in separate branches.
 For database I am using Oracle 11g. [Click here to download for Windows](https://drive.google.com/file/d/1HHgCzleFn9hPgmxg8G1nmwqATk-oAXia/view?usp=sharing)
 
 Please follow the tutorial in this order if you have started learning from scratch.
