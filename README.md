@@ -2,12 +2,7 @@
 
 You can find different examples in separate branches. Please checkout the branches.
 
-Please note that projects are created using maven. I have used [IntelliJ IDEA Community Version](https://www.jetbrains.com/idea/download) for creation.
-
 For database I am using Oracle 11g. [Click here to download for Windows](https://drive.google.com/file/d/1HHgCzleFn9hPgmxg8G1nmwqATk-oAXia/view?usp=sharing)
-
-
-
 
 Please follow the tutorial in this order if you have started learning from scratch.
 
