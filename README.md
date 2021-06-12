@@ -6,7 +6,7 @@ For Other examples I am using MySql Community
 
 [Useful Resource](https://docs.google.com/document/d/1QZB24iMfyBsGeI7vO2wmqrgZeFJaz-Uz8K9YAZngGvk/edit?usp=sharing "Notes")
 
-Please follow the tutorial in this order if you have started learning from scratch.
+Please follow the examples in following order if you have started learning from scratch.
 
 [1. Basic JDBC Example](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-demo "jdbc-demo")
 
