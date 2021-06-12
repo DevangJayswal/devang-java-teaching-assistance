@@ -3,8 +3,6 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
-
-
 <hibernate-configuration>
   <session-factory>
     <!-- Database connection settings -->
@@ -12,7 +10,7 @@
     <property name="connection.username">system</property>
     <property name="connection.password">oracle</property>
     <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
-<!--    <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/L081770.corp.ads</property>-->
+    <!--    <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/L081770.corp.ads</property>-->
     <!-- JDBC connection pool (use the built-in) -->
     <property name="connection.pool_size">1</property>
     <!-- SQL dialect -->
@@ -23,18 +21,18 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="use_sql">true</property>
-     <property name="connection.autocommit">true</property>
+    <property name="connection.autocommit">true</property>
     <property name="current_session_context_class">thread</property>
     <!-- Drop and re-create the database schema on startup -->
     <property name="hbm2ddl.auto">create</property>
-        <mapping class="bean.Patient"/>
-        <mapping class="bean.Doctor"/>
-        <mapping class="bean.Hospital"/>
-        
-        <mapping class="model.Team"/>
-        <mapping class="model.Player"/>
-        <mapping class="model.Manager"/>
-       
-         
+    <mapping class="bean.Patient"/>
+    <mapping class="bean.Doctor"/>
+    <mapping class="bean.Hospital"/>
+
+    <mapping class="model.Team"/>
+    <mapping class="model.Player"/>
+    <mapping class="model.Manager"/>
+
+
   </session-factory>
 </hibernate-configuration>
