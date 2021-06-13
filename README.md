@@ -12,6 +12,6 @@ Please explore the examples in following order if you have started learning from
 
 [2. JDBC Example using DAO (Data Access Object) Pattern](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-dao-example "jdbc-dao-example")
 
-[3. Hibernate MySql CRUD demo](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/hibernate-mysql-demo "hibernate-mysql-demo")
+[3. Hibernate MySql CRUD](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/hibernate-mysql-demo "hibernate-mysql-demo")
 
 
