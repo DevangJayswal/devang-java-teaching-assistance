@@ -8,10 +8,12 @@ For other examples I am using MySql Community
 
 Please explore the examples in following order if you have started learning from the scratch.
 
-[1. Basic JDBC Example](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-demo "jdbc-demo")
+[Core Java Programming Example](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/README.md)
 
-[2. JDBC Example using DAO (Data Access Object) Pattern](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-dao-example "jdbc-dao-example")
+[Basic JDBC Example](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-demo "jdbc-demo")
 
-[3. Hibernate MySql CRUD](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/hibernate-mysql-demo "hibernate-mysql-demo")
+[JDBC Example using DAO (Data Access Object) Pattern](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/jdbc-dao-example "jdbc-dao-example")
+
+[Hibernate MySql CRUD](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/hibernate-mysql-demo "hibernate-mysql-demo")
 
 
