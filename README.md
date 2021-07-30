@@ -1,4 +1,4 @@
-# This branch contains core java programming example that includes:
+# This branch contains core java programming example. I am using JDK 11 and IntelliJ IDE in this examples.
 
 [ Main Application ](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/java/com/example/MainApp.java)
 
