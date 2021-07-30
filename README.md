@@ -1,6 +1,6 @@
 # This branch contains core java programming example that includes:
 
-[ Main Program ](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/java/com/example/MainApp.java)
+[ Main Application ](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/java/com/example/MainApp.java)
 
 [ Check whether number is Prime ](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/java/com/example/Java001PrimeNumber.java)
 
