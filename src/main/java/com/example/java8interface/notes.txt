@@ -1,0 +1,10 @@
+** Interface rule until version 7
+every variable present inside interface is public static final
+every method present inside is by default public and abstract
+
+** from version 8
+we can write concrete method inside interface
+these methods are called default method
+we can write any number of default method inside interface
+
+
