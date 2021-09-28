@@ -1,9 +1,6 @@
-package com.example.lambda;
-
-import java.util.Comparator;
+package com.example.java8.lambda;
 
 public class LambdaRunnable {
-
 
     public static void main(String[] args) {
 
