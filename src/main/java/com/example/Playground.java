@@ -1,16 +1,34 @@
 package com.example;
 
 
-class Number {
+class Random {
     int value;
 }
 
 public class Playground {
-    static int x;
-
 
     public static void main(String[] args) {
+        Integer i = 10;
+        int j = 20;
+        Integer k = Integer.valueOf(50);
+        j=k;
 
+        System.out.println(j);
+
+
+//        System.out.println("i: " + i + " j: " + j);
+//        change(i, j);
+//        System.out.println("i: " + i + " j: " + j);
+
+
+
+    }
+
+    static void change(int i, Integer j) {
+        i = 30;
+        j = 40;
+    }
+}
 
 
 //        int primitiveInt = 10;
@@ -23,12 +41,6 @@ public class Playground {
 //
 //        change(objectInt);
 //        System.out.println(objectInt);
-    }
-
-    static void change(int i) {
-        i = 30;
-    }
-}
 
 //    public static int[] random(int[] x, int y) {
 //        int[] array = new int[3];

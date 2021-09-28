@@ -1,4 +1,4 @@
-package com.example.java8interface;
+package com.example.java8;
 
 interface SomeInterface{
     void m1();
