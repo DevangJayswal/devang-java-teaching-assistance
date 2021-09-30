@@ -8,7 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.example.entity.Book;
 
-public class MainAppWithoutDAO {
+public class MainApp {
 
 	public static void main(String[] args) {
 		SessionFactory sessionFactory;
