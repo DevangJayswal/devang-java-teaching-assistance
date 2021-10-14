@@ -6,7 +6,7 @@ package com.example.fundamentals.anonymous_inner_class;
 * 3. defined inside arguments
 * */
 
-public class AnonymousInnerClass {
+public class AnonymousInnerClassDemo {
     public static void main(String[] args) {
 
         Popcorn p = new Popcorn();

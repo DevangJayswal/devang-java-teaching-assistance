@@ -1,6 +1,6 @@
 package com.example.fundamentals.anonymous_inner_class;
 
-public class AnonymousInnerClass1 {
+public class AnonymousInnerClassDemo1 {
     /*
      * three ways to create Anonymous Inner class
      * 1. extends a class
