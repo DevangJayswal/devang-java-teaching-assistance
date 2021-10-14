@@ -23,6 +23,7 @@ public class LambdaRunnable {
         thread.start();
 
         // implementing Runnable with lambda
+        // we can use lambda expression only if the interface has only single abstract method
         Thread thread1 = new Thread(()->{
             for (int i = 0; i < 10; i++) {
                 try {
