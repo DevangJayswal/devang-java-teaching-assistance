@@ -1,0 +1,78 @@
+Initial
+
+- http://localhost:8765/CURRENCY-EXCHANGE/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/CURRENCY-CONVERSION/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/CURRENCY-CONVERSION/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+
+Lower Case
+
+- http://localhost:8765/currency-exchange/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/currency-conversion/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+
+Custom Routes
+
+- http://localhost:8765/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/10
+
+api-gateway (localhost:8765)
+http://localhost:[api_gateway_port]/[app_name_from_eureka_server]/[url_to_call_on_app]
+api_gateway_port=8765
+app_name_from_eureka_server=CURRENCY-EXCHANGE
+url_to_call_on_app=currency-exchange/from/USD/to/INR
+[calling currency-exchange using api-gateway]
+http://localhost:8765/CURRENCY-EXCHANGE/currency-exchange/from/USD/to/INR
+Initially we will get an error. Saying not found
+what we are doing here that we want api-gateway to talk to naming-server with app_name_from_eureka_server
+and execute request to above url
+However we will have to enable this feature in application.properties Initially
+
+[calling currency-conversion using api-gateway]
+http://localhost:8765/CURRENCY-CONVERSION/currency-conversion-feign/from/USD/to/INR/quantity/10
+http://localhost:8765/CURRENCY-CONVERSION/currency-conversion/from/USD/to/INR/quantity/10
+
+[calling api-gateway and providing currency-exchange]
+http://localhost:8765/API-GATEWAY/CURRENCY-EXCHANGE/currency-exchange/from/USD/to/INR
+
+[after converting to lowercase](`spring.cloud.gateway.discovery.locator.lowerCaseServiceId=true`)
+http://localhost:8765/currency-exchange/currency-exchange/from/USD/to/INR
+http://localhost:8765/currency-conversion/currency-conversion/from/USD/to/INR/quantity/10
+http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+
+
+[after removing leading service name]
+http://localhost:8765/currency-exchange/from/USD/to/INR
+http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/10
+http://localhost:8765/currency-conversion-feign/from/USD/to/INR/quantity/10
+http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/10
+
+naming-server (Eureka)
+http://localhost:8761/
+
+currency-conversion
+http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/10
+http://localhost:8100/currency-conversion/from/USD/to/INR/quantity/10
+
+currency-exchange
+http://localhost:8000/currency-exchange/from/USD/to/INR
+http://localhost:8001/currency-exchange/from/USD/to/INR
+
+limits-service
+http://localhost:8080/limits
+
+spring-cloud-config-server
+http://localhost:8888/limits-service/default
+http://localhost:8888/limits-service/dev
+http://localhost:8888/limits-service/qa
