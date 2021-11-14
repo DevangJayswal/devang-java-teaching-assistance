@@ -1,0 +1,49 @@
+
+
+
+stop container
+docker container stop [container_id(intial_5_digit_works_as_well)]
+
+list all the container irrespective of theie running status
+docker container ls -a
+
+show all images
+docker images
+
+docker container ls
+
+run multiple container from same image on another port 5001
+docker run -p 5001:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+to see containers which are running
+docker container ls
+
+to keep following the logs
+docker logs -f [container_id(intial_5_digit_works_as_well)] 
+http://localhost:5000/jpa/users/in28minutes/todos
+
+you wont see any logs. to see them you can
+docker logs [container_id]
+
+we want our application to always be running. you dont want it to be killed when you do ctrl c. To do that,
+we can add an option called -d stands for detached mode. so we want to run the container in the background and it will return container id.
+docker run -p 5000:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+By default, any container that we run is part of something called bridge network in Docker. we can think of it like an internal docker network.
+nobody will be able to access it unless we specifically expose it onto the host, onto the system where container is running.
+so what we are doing is that we are taking inernal port, the container port 5000 and maping it to a host port through a port of the system where the container
+is running which is 5000.
+-p {HostPort}:{ContainerPort}}
+docker run -p 5000:5000 in28min/todo-rest-api-h2:1.0.0.RELEASE
+url: localhost:5000/hello-world
+will be downloaded from https://hub.docker.com/r/in28min/todo-rest-api-h2
+docker run in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+docker -v
+images will be downloaded from hub.docker.com. It is called Docker Registry
+
+image is class and container is object 
+Image -> a static templeate, a set of bytes
+container -> runing version of your images
+
+
