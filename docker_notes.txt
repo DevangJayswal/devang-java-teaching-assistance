@@ -1,5 +1,11 @@
 
+we can give multipe tags to a single image. for same image we can give multiple tags.
+docker tag [repository]:[tag] [repository]:[new_tag]
+docker tag in28min/todo-rest-api-h2:1.0.0.RELEASE in28min/todo-rest-api-h2:latest
+-> we can this is the latest version of this [in28min/todo-rest-api-h2:1.0.0.RELEASE]
 
+repository:tag
+in28min/todo-rest-api-h2:1.0.0.RELEASE
 
 stop container
 docker container stop [container_id(intial_5_digit_works_as_well)]
@@ -40,6 +46,7 @@ will be downloaded from https://hub.docker.com/r/in28min/todo-rest-api-h2
 docker run in28min/todo-rest-api-h2:1.0.0.RELEASE
 
 docker -v
+
 images will be downloaded from hub.docker.com. It is called Docker Registry
 
 image is class and container is object 
