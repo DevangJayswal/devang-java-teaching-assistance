@@ -1,0 +1,19 @@
+maven lifecycles
+
+	- Clean
+		- pre-clean
+		- clean
+		- ...
+		
+	- Build (default)
+		- validate
+		- compile
+		- test
+		- package
+		- verify 
+		- install
+		- deploy
+		- ...
+	- Site
+		- site
+		
