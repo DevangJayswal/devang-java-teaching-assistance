@@ -6,4 +6,4 @@ mvn install -p<profile_name>
 
 mvn install -pprod
 
-# check target directory, you will see application.properties file of specific profile
+# check target directory, you will see application.properties file of the profile you have mentioned while `mvn install -p<profile_name>`
