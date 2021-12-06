@@ -3,6 +3,7 @@ mvn clean
 
 # install with specific profile
 mvn install -p<profile_name>
+
 mvn install -pprod
 
 # check target directory, you will see application.properties file of specific profile
