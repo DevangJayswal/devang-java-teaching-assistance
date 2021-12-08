@@ -1,12 +1,6 @@
-## to use this plugin we have two steps
+1. Cut the cheese
+ * Make sure that the cheese is cut into little triangles.
 
-	1. initialization of jacoco code plugin so that it would be ready to generate reports
-		executions
-			goal1: `prepare-agent`
-				it will prepare jacoco code coverage agent
-			goal2: `report`, id: `generatereport`, phase:`test`
-				it will be executed right after the `test` phase
-	2. run the goal that will actually generate the reports for tests that are executed
-		
-
-				
+2. Slice the tomatoes
+  * Be careful when holding the knife.
+  * For more help on tomato slicing, see Thomas Jefferson's seminal essay _Tom Ate Those_.
