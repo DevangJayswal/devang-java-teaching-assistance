@@ -26,7 +26,7 @@ public class ProductDAOImplTest {
 //		assertEquals("Ipad", result.getName());
 		
 		// should succeed
-		assertEquals("Iphone", result.getName());
+		assertEquals("IPhone", result.getName());
 
 	}
 
