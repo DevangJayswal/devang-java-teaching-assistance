@@ -1,4 +1,4 @@
-# This branch contains core java programming example. I am using JDK 11 and IntelliJ IDE in these examples.
+# This branch contains core java programming example.
 
 [ Java 8 New Features Book](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/resources/Java%208%20New%20Features%20Durgasoft.pdf)
 
