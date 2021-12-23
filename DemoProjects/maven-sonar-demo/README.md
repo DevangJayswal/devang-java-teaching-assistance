@@ -21,7 +21,7 @@ the sonar running on a different server. you can pass that url inside properties
 * because we don't have credentials setup 
 * go to`localhost:9000` -> go to `My Account` from top right menu.  -> click on `Security` tab
 * and now we need to generate a token. enter token name that you want and generate.
-* go to terminal and `mvn clean verify sonar:sonar -Dsonar.login=25ee6429e8b545ed0602e4796cd91b80cb26ce61`
+* go to terminal and `mvn clean verify sonar:sonar -Dsonar.login=<token_you_generated>`
 * we can use this security token, and then we can run the sonar goal 
 * then reports will be automatically available for sonar to analyze, and they will appear on `localhost:9000` dashboard
 * 
