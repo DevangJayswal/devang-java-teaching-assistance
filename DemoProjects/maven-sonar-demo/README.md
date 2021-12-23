@@ -1,5 +1,5 @@
 ## run
-`mvn clean verify sonar:sonar`
+`mvn clean verify sonar:sonar -Dsonar.login=<token_you_generated>`
 
 ## install sonar
 * download zip
