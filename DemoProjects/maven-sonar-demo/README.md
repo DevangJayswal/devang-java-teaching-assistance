@@ -1,6 +1,3 @@
-## run
-`mvn clean verify sonar:sonar -Dsonar.login=<token_you_generated>`
-
 ## install sonar
 * download zip
 * extract zip
@@ -8,7 +5,7 @@
 * run `StartSonar.bat`
 * go to `localhost:9000`
 * initially the default username and password is `admin`
-
+* 
 ## setup sonar
 * copy and paste `src/main/resources/settings.xml` under your `.m2` directory of maven
 * this will have sonar `pluginGroups` and we will also activate sonar plugin by default
@@ -24,4 +21,7 @@ the sonar running on a different server. you can pass that url inside properties
 * go to terminal and `mvn clean verify sonar:sonar -Dsonar.login=<token_you_generated>`
 * we can use this security token, and then we can run the sonar goal 
 * then reports will be automatically available for sonar to analyze, and they will appear on `localhost:9000` dashboard
-* 
+
+## run
+`mvn clean verify sonar:sonar -Dsonar.login=<token_you_generated>`
+* please note that this project is using Jacoco Plugin
