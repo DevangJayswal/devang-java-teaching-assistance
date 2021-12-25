@@ -24,4 +24,3 @@ the sonar running on a different server. you can pass that url inside properties
 
 ## run
 `mvn clean verify sonar:sonar -Dsonar.login=<token_you_generated>`
-* please note that this project is using Jacoco Plugin
