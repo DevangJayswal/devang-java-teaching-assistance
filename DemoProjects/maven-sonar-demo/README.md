@@ -22,6 +22,11 @@ the sonar running on a different server. you can pass that url inside properties
 * we can use this security token, and then we can run the sonar goal 
 * then reports will be automatically available for sonar to analyze, and they will appear on `localhost:9000` dashboard
 * please note that `jacoco-maven-plugin` is present in `pom.xml` for code coverage of unit tests
+* `mvn clean verify` generate all the tests report
+* to push the reports and to do sonar static code analysis, we use `sonar:sonar` and pass in the authentication token
+using `-Dsonar.login` which you have generated
+* we can configure any number of rules for sonar and do the static code analysis 
+
 
 ## run
 `mvn clean verify sonar:sonar -Dsonar.login=<token_you_generated>`

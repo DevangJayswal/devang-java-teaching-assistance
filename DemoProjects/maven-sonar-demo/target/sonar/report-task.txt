@@ -2,5 +2,5 @@ projectKey=com.example:maven-sonar-demo
 serverUrl=http://localhost:9000
 serverVersion=9.2.1.49989
 dashboardUrl=http://localhost:9000/dashboard?id=com.example%3Amaven-sonar-demo
-ceTaskId=AX3ztKMx35mpsbWPXbWK
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AX3ztKMx35mpsbWPXbWK
+ceTaskId=AX3zuzU935mpsbWPXbWL
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AX3zuzU935mpsbWPXbWL
