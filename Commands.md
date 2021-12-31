@@ -1,5 +1,5 @@
 ## create maven project
-* create quickstart project
+* create stand-alone quickstart project
 `mvn archetype:generate -DgroupId=com.example -DartifactId=java-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
 * create webapp project
