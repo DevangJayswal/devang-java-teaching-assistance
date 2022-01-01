@@ -1,8 +1,8 @@
-package com.example.java8;
+package com.example.java8.functional_interface;
 
 import java.util.function.Function;
 
-public class FunctionInterface {
+public class FunctionDemo {
     public static void main(String[] args) {
 
         // first generic parameter is input type and second is return type
