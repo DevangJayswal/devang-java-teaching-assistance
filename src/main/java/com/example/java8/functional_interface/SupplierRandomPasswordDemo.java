@@ -1,8 +1,8 @@
-package com.example.java8;
+package com.example.java8.functional_interface;
 
 import java.util.function.Supplier;
 
-public class RandomPasswordSupplier {
+public class SupplierRandomPasswordDemo {
     public static void main(String[] args) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$";
 
