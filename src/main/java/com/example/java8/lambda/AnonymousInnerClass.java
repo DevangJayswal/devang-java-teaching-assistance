@@ -1,10 +1,10 @@
-package com.example.java8;
+package com.example.java8.lambda;
 
 interface SomeInterface{
     void m1();
 }
 
-public class InnerClassInterface {
+public class AnonymousInnerClass {
     public static void main(String[] args) {
         // by  making use of inner class we do not need to explicitly create new class to implement
         // method of interface
