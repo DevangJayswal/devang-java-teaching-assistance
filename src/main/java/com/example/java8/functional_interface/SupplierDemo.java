@@ -1,8 +1,11 @@
-package com.example.java8;
+package com.example.java8.functional_interface;
 
 import java.util.function.Supplier;
 
-public class SupplierInterface {
+
+// Supplier would supply something to us -> return something
+// Consumer would consume something from us -> get something
+public class SupplierDemo {
     public static void main(String[] args) {
         Supplier<String> otp = () -> {
             StringBuilder random = new StringBuilder();
