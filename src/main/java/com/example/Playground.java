@@ -7,28 +7,31 @@ class Random {
 
 public class Playground {
 
-    public static void main(String[] args) {
-        Integer i = 10;
-        int j = 20;
-        Integer k = Integer.valueOf(50);
-        j=k;
 
-        System.out.println(j);
+    public static void main(String[] args) {
+
+    }
+
+
+}
+
+//    static void change(int i, Integer j) {
+//        i = 30;
+//        j = 40;
+//    }
+
+//        Integer i = 10;
+//        int j = 20;
+//        Integer k = Integer.valueOf(50);
+//        j=k;
+//
+//        System.out.println(j);
 
 
 //        System.out.println("i: " + i + " j: " + j);
 //        change(i, j);
 //        System.out.println("i: " + i + " j: " + j);
 
-
-
-    }
-
-    static void change(int i, Integer j) {
-        i = 30;
-        j = 40;
-    }
-}
 
 
 //        int primitiveInt = 10;
