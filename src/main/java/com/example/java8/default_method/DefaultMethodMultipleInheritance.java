@@ -1,4 +1,4 @@
-package com.example.java8;
+package com.example.java8.default_method;
 
 interface Left{
     default void m1(){
