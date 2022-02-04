@@ -24,14 +24,20 @@ public class MainApp {
 		book.setAuthor("France Melion");
 		book.setPrice(42.59f);
 
+		// open session
 		Session session = sessionFactory.openSession();
+		// begin transaction
 		session.beginTransaction();
 
+		// save one book object in database
 		session.save(book);
 
+		// commit transaction
 		session.getTransaction().commit();
+		// close the session
 		session.close();
 
+		// close sessionFactory
 		sessionFactory.close();
 
 	}
