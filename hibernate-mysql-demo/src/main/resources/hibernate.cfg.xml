@@ -16,7 +16,7 @@
 		<property name="hbm2ddl.auto">create</property>
 
 		<!-- Mapping class -->
-		<mapping class="com.example.entity.Book" />
+		<mapping class="com.example.save_object.entity.Book" />
 
 	</session-factory>
 </hibernate-configuration>

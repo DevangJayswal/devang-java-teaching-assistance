@@ -1,4 +1,4 @@
-package com.example;
+package com.example.save_object;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -6,9 +6,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import com.example.entity.Book;
+import com.example.save_object.entity.Book;
 
-public class MainApp {
+public class SaveObjectDemo {
 
 	public static void main(String[] args) {
 		SessionFactory sessionFactory;
@@ -18,7 +18,7 @@ public class MainApp {
 		// creating SessionFactory
 		sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 
-		// code to save a book
+		// create new Book object
 		Book book = new Book();
 		book.setTitle("Python");
 		book.setAuthor("France Melion");
@@ -28,15 +28,12 @@ public class MainApp {
 		Session session = sessionFactory.openSession();
 		// begin transaction
 		session.beginTransaction();
-
 		// save one book object in database
 		session.save(book);
-
 		// commit transaction
 		session.getTransaction().commit();
 		// close the session
 		session.close();
-
 		// close sessionFactory
 		sessionFactory.close();
 

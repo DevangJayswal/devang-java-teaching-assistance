@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example.save_object.entity;
 
 import javax.persistence.*;
 
