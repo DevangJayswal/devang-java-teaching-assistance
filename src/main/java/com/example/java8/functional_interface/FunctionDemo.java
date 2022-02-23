@@ -8,6 +8,8 @@ public class FunctionDemo {
         // first generic parameter is input type and second is return type
         Function<String, String> upperCase = s -> s.toUpperCase();
         System.out.println(upperCase.apply("Aishwarya"));
+        String str = upperCase.apply("Devang");
+        System.out.println(str);
 
         Function<String, String> extract = s -> s.substring(0, 9);
         System.out.println(extract.apply("AishwaryAbhi"));
