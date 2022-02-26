@@ -1,10 +1,11 @@
 package com.example.java8.functional_interface;
 
-// Consumer -> functional interface
-// accept() -> one and only method of Consumer
 
 // Consumer consume something from us -> get something
 // Supplier supplies something to us => return something
+
+// Consumer -> functional interface
+// accept() -> one and only method of Consumer
 
 import java.util.function.Consumer;
 
