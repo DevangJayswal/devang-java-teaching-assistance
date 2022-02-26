@@ -42,12 +42,17 @@ public class OptionalDemo2 {
         // `orElseGet()` which accepts `Supplier<String>` as an argument which returns a `String`,
         // we can use lambda expression to implement `Supplier<String>`
 
-        String actualStringOrElseGet = optionalStr.orElseGet(()-> {
+        String actualStringOrElseGet = optionalStr.orElseGet(() -> {
             System.out.println("We couldn't get anything. Returning `Nothing`");
             return "Nothing";
         });
 
         System.out.println("actualStringOrElseGet: " + actualStringOrElseGet);
+
+        // will return `Hello` if the string is not null
+        optionalStr.ifPresent(s -> {
+            System.out.println("ifPresent s: " + s); // `Hello`
+        });
     }
 
     static String getString() {
