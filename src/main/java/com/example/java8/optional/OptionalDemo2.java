@@ -27,7 +27,7 @@ public class OptionalDemo2 {
         // it is always better to use orElse() method to retrieve the String
         // as it enforces you that what should happen if the String is null
         // we should write t
-        String actualStringOrElse  = optionalStr.orElse("NoStringAttached");
+        String actualStringOrElse = optionalStr.orElse("NoStringAttached");
         System.out.println("actualStringOrElse: " + actualStringOrElse); // `NoStringAttached` or `Hello`
 
         // str -> `null` or `Hello`
@@ -53,6 +53,14 @@ public class OptionalDemo2 {
         optionalStr.ifPresent(s -> {
             System.out.println("ifPresent s: " + s); // `Hello`
         });
+
+        // NOTE: ifPresentOrElse is available from Java 9
+        optionalStr.ifPresentOrElse(string -> {
+            System.out.println("Value is present (Not null), string: " + string); // `Hello`
+        }, () -> {
+            System.out.println("Value is empty (null)");
+        });
+
     }
 
     static String getString() {
