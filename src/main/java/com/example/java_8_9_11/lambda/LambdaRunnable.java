@@ -1,4 +1,4 @@
-package com.example.java8.lambda;
+package com.example.java_8_9_11.lambda;
 
 public class LambdaRunnable {
 

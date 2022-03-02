@@ -1,8 +1,7 @@
-package com.example.java8.method_constructor_reference;
+package com.example.java_8_9_11.method_constructor_reference;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 
 // ClassName::staticMethodName

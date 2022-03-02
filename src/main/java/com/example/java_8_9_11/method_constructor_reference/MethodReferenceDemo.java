@@ -1,4 +1,4 @@
-package com.example.java8.method_constructor_reference;
+package com.example.java_8_9_11.method_constructor_reference;
 
 // instead of lambda expression we can use method reference
 

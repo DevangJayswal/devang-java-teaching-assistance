@@ -1,4 +1,4 @@
-package com.example.java8.method_constructor_reference;
+package com.example.java_8_9_11.method_constructor_reference;
 
 interface FnInterface{
     Sample m1();

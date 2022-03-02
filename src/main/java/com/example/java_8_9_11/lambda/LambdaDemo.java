@@ -1,4 +1,4 @@
-package com.example.java8.lambda;
+package com.example.java_8_9_11.lambda;
 
 // this interface has only single abstract method
 // so in java 8 terms we can call it Functional Interface
