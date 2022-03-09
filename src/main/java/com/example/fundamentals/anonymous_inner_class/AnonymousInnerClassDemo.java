@@ -54,6 +54,10 @@ public class AnonymousInnerClassDemo {
         // we extended the Popcorn class without name and created its own implementation
         // this is called Anonymous Inner class
         p1.taste(); // salty
+        
+        // so the advantage of AnonymousInner class is that we do not need to create
+        // separate class (Subpopcorn) to override the behaviour (tasty() method) of Popcorn class
+        // we can directly use AnonymousInner class
 
         // for each Anonymous class separate .class file will be generated
         // in this case, name will be `AnonymousInnerClass$1.class`
