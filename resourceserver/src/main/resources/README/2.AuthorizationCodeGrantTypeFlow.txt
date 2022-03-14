@@ -1,0 +1,182 @@
+Authorization Code Grant Type Flow
+-> Not Recommended with implementing inside client facing application
+ because we need to provide client_id and client_secret in order to get the access token
+ In order to do that we need to store client_secret inside our web app code that is javascript
+ anybody can look at the javascript code and try to hack it
+
+-> using Authorization Code with PKCE (Proof Key for Code Exchange) is recommended
+
+* Auth Server (KeyCloak): 8083
+* Resource Server: 9091 (this)
+* API to be served after Authentication and Authorization: 9091 (this)
+Well Known API endpoints to be served
+localhost:9091/myAccount
+localhost:9091/myLoans
+
+---------------------------------- GETTING `code` (Authorization Code) ---------------------------------------
+INVOKE -> GET -> http://localhost:8083/auth/realms/eazybankdev/.well-known/openid-configuration
+calling Auth Server that is KeyCloak for getting all the well-known endpoints
+
+"userinfo_endpoint" -> KeyCloak Server or any IAM management products, exposes the dedicates endpoint
+                       to know the user identity details
+"authorization_endpoint" -> http://localhost:8083/auth/realms/eazybankdev/protocol/openid-connect/auth
+                             used for AuthorizationCode Grant Type Flow
+"token_endpoint" -> "http://localhost:8083/auth/realms/eazybankdev/protocol/openid-connect/token"
+
+-------------------------------------------------
+INVOKE -> GET `authorization_endpoint`
+            -> Params
+                -> client_id, response_type, scope, redirect_uri, state
+                * client_id: eazyuiclient <get it from KeyCloak clients>
+                * response_type: code < we would get `code` from KeyCloak after invocation>
+                * scope: openid
+                * redirect_uri: http://localhost:9095/sample (should match with what we have configured in KeyCloak)
+                * state: sdkfsdjlikf (this is just like a CSRF token to avoid CSRF security issues, you can give any
+                random generated value here but this `state` parameter is completely optional. even if you do not provide
+                this parameter this would work)
+
+OBSERVATION: In Auth Code Flow we are not required to pass the `clint_secret` at this point
+
+We can not invoke this request from the postman because as soon as we invoke this url you will get a login page,
+and we can't log in through Post Man. For that reason copy the url from the Post Man and invoke it from browser
+
+Once you invoke the url from browser you will be landed to the login page served by KeyCloak
+Any IAM server including KeyCloak gives flexibility to change this login page as per business organization
+requirement. So the user won't feel that they are trying to log in into a different application
+
+You may get an error page or ERR_CONNECTION_REFUSED because the KeyCloak has redirected to the Redirect URI that we
+had specified in the request. KeyCloak is passing the same parameter `state` value to confirm that there is no
+CSRF token issue. Along with the `session_sate` we get the `code`.
+We are interested in `code` also called Authorization Code
+
+RESPONSE:
+http://localhost:9095/sample?state=sdkfsdjlikf&session_state=e063608e-b62e-47a5-b30d-c8579778b65f&code=5a417acc-bef0-4f5e-b896-e52b3831c32b.e063608e-b62e-47a5-b30d-c8579778b65f.05cf2ff2-0307-4627-91f0-374ed7a27b76
+
+copy the `code` and go to Post Man
+
+---------------------------------- GETTING `access_token` --------------------------------------------------------------
+INVOKE -> GET -> http://localhost:8083/auth/realms/eazybankdev/.well-known/openid-configuration
+calling Auth Server that is KeyCloak for getting all the well-known endpoints
+"token_endpoint" -> "http://localhost:8083/auth/realms/eazybankdev/protocol/openid-connect/token"
+
+INVOKE -> POST `token_endpoint` -> BODY -> x-www-form-urlencoded
+       -> client_id, client_secret, code, redirect_uri, scope, grant_type
+       * client_id: eazyuiclient <get it from KeyCloak clients>
+       * client_secret: 80516a46-b185-411c-b1a1-a0125d62cd42 <get it from KeyCloak clients credentials>
+       * code: <paste_the_code_we_copied_from_browser>
+       * redirect_uri: http://localhost:9095/sample
+       * scope: openid
+       * grant_type: authorization_code (when there is no user is involved because in this usecase
+       we have only api to api invocation only)
+
+NOTE: you may receive:
+      {
+          "error": "invalid_grant",
+          "error_description": "Code not valid"
+      }
+      because your code might have expired. Try to get the `code` again and try again
+
+RESPONSE:
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJGbEJ0ZXZGYXlqbjBvQ1AwMXJjc2ZTUkYzeU9MbnA1TzdJeDNEamNIek93In0.eyJleHAiOjE2NDcxMTY3NTAsImlhdCI6MTY0NzExNjQ1MCwiYXV0aF90aW1lIjoxNjQ3MTE2NDA4LCJqdGkiOiIyNTRhMTkxZS1mY2RkLTQ0ZTUtYjUzNC1iYTYwN2FiZGJlY2MiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvYXV0aC9yZWFsbXMvZWF6eWJhbmtkZXYiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiOWUxYWIyNDgtNzU3MS00NDMzLTkyZTAtZmY0NWE0MTYyYmRlIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZWF6eXVpY2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImUwNjM2MDhlLWI2MmUtNDdhNS1iMzBkLWM4NTc5Nzc4YjY1ZiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkRldmFuZyBKYXlzd2FsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGV2YW5nIiwiZ2l2ZW5fbmFtZSI6IkRldmFuZyIsImZhbWlseV9uYW1lIjoiSmF5c3dhbCIsImVtYWlsIjoiZGV2YW5nLmpheXN3YWxAYWRpZGFzLmNvbSJ9.VgZA185K49DQhtSnhmVPZjDr-5YAzW0ZJ9GnLHQNUM6PwJiB8koKWkKXMrpm3fLYzKbefBcfwEolJz2KQsb0oo8NVDyW9NM1ZK71GA_RIL296fPm3iGRH5HSFgGSEsyOlXJcb1Wm9lvzMIWuNx0Co1jI0hb09mebhXaxSbuzm534i5mK9Kxq3zkoXn58XUA_SYQLILSuYhcUI0VJFBxV7buxwgBE83IfeZtdsXebnu2Ns6bqXPzK5ckOe1Y94SSKlHO9WYhGQAZGdnmEjhkRn1Pp-e9WWrR-apAccIH2xUxBlFWzoTWUpGh97MJ8N2njrPxwGLYjsIeVMHKjVyCB0w",
+    "expires_in": 300,
+    "refresh_expires_in": 1800,
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhZjMwOGEyZi04ZTMwLTRiNDAtODY5MS0wMWNjODE2Yzc0ZTgifQ.eyJleHAiOjE2NDcxMTgyNTAsImlhdCI6MTY0NzExNjQ1MCwianRpIjoiYWQ2NDllMzItMGJmYS00ZWM0LWFjNWYtOGNjNGVjNTZlNTQzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL2F1dGgvcmVhbG1zL2VhenliYW5rZGV2IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL2F1dGgvcmVhbG1zL2VhenliYW5rZGV2Iiwic3ViIjoiOWUxYWIyNDgtNzU3MS00NDMzLTkyZTAtZmY0NWE0MTYyYmRlIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImVhenl1aWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJlMDYzNjA4ZS1iNjJlLTQ3YTUtYjMwZC1jODU3OTc3OGI2NWYiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIn0.sYuUCELToFrctGEwRMtM7MJhFkd867yu70lXJ9HYzcI",
+    "token_type": "bearer",
+    "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJGbEJ0ZXZGYXlqbjBvQ1AwMXJjc2ZTUkYzeU9MbnA1TzdJeDNEamNIek93In0.eyJleHAiOjE2NDcxMTY3NTAsImlhdCI6MTY0NzExNjQ1MCwiYXV0aF90aW1lIjoxNjQ3MTE2NDA4LCJqdGkiOiJmY2Y4NzZhNC05ZGQxLTQ0MzUtYTc0Yy1jZTNiYjAyMDg2YTQiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvYXV0aC9yZWFsbXMvZWF6eWJhbmtkZXYiLCJhdWQiOiJlYXp5dWljbGllbnQiLCJzdWIiOiI5ZTFhYjI0OC03NTcxLTQ0MzMtOTJlMC1mZjQ1YTQxNjJiZGUiLCJ0eXAiOiJJRCIsImF6cCI6ImVhenl1aWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJlMDYzNjA4ZS1iNjJlLTQ3YTUtYjMwZC1jODU3OTc3OGI2NWYiLCJhdF9oYXNoIjoiV2hQY2FjQzBUSVpvVThrVWp5R1NuQSIsImFjciI6IjEiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkRldmFuZyBKYXlzd2FsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGV2YW5nIiwiZ2l2ZW5fbmFtZSI6IkRldmFuZyIsImZhbWlseV9uYW1lIjoiSmF5c3dhbCIsImVtYWlsIjoiZGV2YW5nLmpheXN3YWxAYWRpZGFzLmNvbSJ9.hpp9STL33M1ZtLH4izL7S1cq3TOkpD3hdbB2sHHHrYrQqFCjxNV--XPGdh5wwAjEANJs4urOM2TzPRhqn3mywxksOcmICuHTDQp-lRPwNfxo3mO1GpmVAMJACB8_yTJWwsKxe-oxX6dbMYgM4VQvu2T-HR7lTw5NJl1a3OJ-duW2Erdt3dJ96UpoDw6SD62HLTrAK7_x21JU0U83VlOvJQsTCqL6JZHjhDLLbjZ5wGpzbBOYVZepEK3kNLjpwhdJvf0vF72Rw98Xz1yJfSOFe-PMzxjLqPOUGoPRJLNzwX-ijsZPOUaTn2Ogo6imcS5GNRS2pv75L-CAs4hStCCYEQ",
+    "not-before-policy": 0,
+    "session_state": "e063608e-b62e-47a5-b30d-c8579778b65f",
+    "scope": "openid profile email"
+}
+
+copy `access_token`
+
+------------------------------------ INVOKE API ENDPOINT with token ------------------------------------------------------------
+
+copy `access_token`
+
+------------------------------------------------------------
+INVOKE -> POST -> http://localhost:9091/myAccount
+                -> HEADERS -> { Authorization: Bearer<space><access_token> }
+                -> BODY -> raw -> JSON -> { "email": "accounts@eazybytes.com" }
+
+RESPONSE -> 403 Forbidden -> because we have configured `/myAccount` should only be accessed by (hasAnyRole) `USER`
+                          -> since we have not created any role and assigned to the client that we have created on the
+                          KeyCloak, it is throwing 403 Forbidden
+                          -> 403 Forbidden means you are authenticated, but you are not authorized
+------------------------------------------------------------
+INVOKE -> POST -> http://localhost:9091/myLoans ->
+                  HEADERS -> [ Authorization: Bearer<space><access_token> ]
+                  BODY -> raw -> JSON -> { "email": "accounts@eazybytes.com" }
+
+RESPONSE -> 200 OK
+         -> because endpoint `/myLoans` has not been associated with any role
+[
+    {
+        "loanNumber": 1,
+        "email": "accounts@eazybytes.com",
+        "startDt": "2020-10-13",
+        "loanType": "Home",
+        "totalLoan": 200000,
+        "amountPaid": 50000,
+        "outstandingAmount": 150000,
+        "createDt": "2020-10-13"
+    },
+    {
+        "loanNumber": 2,
+        "email": "accounts@eazybytes.com",
+        "startDt": "2020-06-06",
+        "loanType": "Vehicle",
+        "totalLoan": 40000,
+        "amountPaid": 10000,
+        "outstandingAmount": 30000,
+        "createDt": "2020-06-06"
+    },
+    {
+        "loanNumber": 3,
+        "email": "accounts@eazybytes.com",
+        "startDt": "2018-02-14",
+        "loanType": "Home",
+        "totalLoan": 50000,
+        "amountPaid": 10000,
+        "outstandingAmount": 40000,
+        "createDt": "2018-02-14"
+    },
+    {
+        "loanNumber": 4,
+        "email": "accounts@eazybytes.com",
+        "startDt": "2018-02-14",
+        "loanType": "Personal",
+        "totalLoan": 10000,
+        "amountPaid": 3500,
+        "outstandingAmount": 6500,
+        "createDt": "2018-02-14"
+    }
+]
+
+------------------------------------------------------------
+Go ahead and create role in
+    KeyCloak -> Roles -> create `USER` and `ADMIN` role
+             -> Clients -> Service Account Roles (because this is not an individual user, this is a service account
+             which we are trying to use inside `Client Credential Grant Type`)
+                         -> Add `USER` and `ADMIN` roles
+Now at this point client `eazybankapi` has role access of ADMIN and USER
+If we try to get fresh access token and invole `/myAccount` API it should work without any issues
+
+------------------------------------------------------------
+INVOKE -> POST -> http://localhost:9091/myAccount
+                -> HEADERS -> { Authorization: Bearer<space><access_token> }
+                -> BODY -> raw -> JSON -> { "email": "accounts@eazybytes.com" }
+
+RESPONSE -> 200 OK
+{
+    "accountNumber": 186576453,
+    "email": "accounts@eazybytes.com",
+    "accountType": "Savings",
+    "branchAddress": "123 Main Street, New York",
+    "createDt": "2022-03-11"
+}
+
+------------------------------------------------------------
+we can also check what is present inside <access_token> by going to jwt.io
+------------------------------------------------------------
