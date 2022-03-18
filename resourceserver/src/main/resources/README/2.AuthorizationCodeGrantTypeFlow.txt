@@ -1,7 +1,7 @@
 Authorization Code Grant Type Flow
--> Not Recommended with implementing inside client facing application
- because we need to provide client_id and client_secret in order to get the access token
- In order to do that we need to store client_secret inside our web app code that is javascript
+-> Not recommended implementing inside client facing application
+ because we will have to provide `client_secret` in order to get the `access_token`
+ In order to do that we need to store `client_secret` inside our web app code that is javascript
  anybody can look at the javascript code and try to hack it
 
 -> using Authorization Code with PKCE (Proof Key for Code Exchange) is recommended
@@ -13,17 +13,22 @@ Well Known API endpoints to be served
 localhost:9091/myAccount
 localhost:9091/myLoans
 
----------------------------------- GETTING `code` (Authorization Code) ---------------------------------------
+
+----------------------------------- well-known openid-configuration ---------------------------------
+ENDPOINTS:
+    1. token: to get the `access_token`
+    2. authorization: to get the authorization `code`
+
 INVOKE -> GET -> http://localhost:8083/auth/realms/eazybankdev/.well-known/openid-configuration
 calling Auth Server that is KeyCloak for getting all the well-known endpoints
 
 "userinfo_endpoint" -> KeyCloak Server or any IAM management products, exposes the dedicates endpoint
                        to know the user identity details
 "authorization_endpoint" -> http://localhost:8083/auth/realms/eazybankdev/protocol/openid-connect/auth
-                             used for AuthorizationCode Grant Type Flow
+                             used for Authorization Code Grant Type Flow
 "token_endpoint" -> "http://localhost:8083/auth/realms/eazybankdev/protocol/openid-connect/token"
 
--------------------------------------------------
+---------------------------------- GETTING authorization `code` -------------------------------------------
 INVOKE -> GET `authorization_endpoint`
             -> Params
                 -> client_id, response_type, scope, redirect_uri, state
@@ -35,7 +40,7 @@ INVOKE -> GET `authorization_endpoint`
                 random generated value here but this `state` parameter is completely optional. even if you do not provide
                 this parameter this would work)
 
-OBSERVATION: In Auth Code Flow we are not required to pass the `clint_secret` at this point
+OBSERVATION: In Auth Code Flow we are not required to pass the `client_secret` at this point
 
 We can not invoke this request from the postman because as soon as we invoke this url you will get a login page,
 and we can't log in through Post Man. For that reason copy the url from the Post Man and invoke it from browser
@@ -91,7 +96,7 @@ RESPONSE:
 
 copy `access_token`
 
------------------------------------- INVOKE API ENDPOINT with token ------------------------------------------------------------
+------------------------------------ INVOKE API ENDPOINT with `access_token` ------------------------------------------------------------
 
 copy `access_token`
 
