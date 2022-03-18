@@ -55,6 +55,7 @@ CSRF token issue. Along with the `session_sate` we get the `code`.
 We are interested in `code` also called Authorization Code
 
 RESPONSE:
+state, session_state, code
 http://localhost:9095/sample?state=sdkfsdjlikf&session_state=e063608e-b62e-47a5-b30d-c8579778b65f&code=5a417acc-bef0-4f5e-b896-e52b3831c32b.e063608e-b62e-47a5-b30d-c8579778b65f.05cf2ff2-0307-4627-91f0-374ed7a27b76
 
 copy the `code` and go to Post Man
