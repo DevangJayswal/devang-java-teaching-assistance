@@ -8,7 +8,7 @@ Authorization Code Grant Type Flow
  like Single Page Application (Angular, React). Because there is no mechanism in public facing application to
  securely store `client_secret`
 
--> SECURE CLIENT: If your login pages are implemented within the web server (using Spring MVC) then we can use
+-> SECURE CLIENT: If your web application is using Spring MVC then we can use
  Authorization Code Flow by storing `client_secret` within the web server.
 
 FLOW:
