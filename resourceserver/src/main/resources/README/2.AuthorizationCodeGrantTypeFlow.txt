@@ -4,7 +4,26 @@ Authorization Code Grant Type Flow
  In order to do that we need to store `client_secret` inside our web app code that is javascript
  anybody can look at the javascript code and try to hack it
 
--> using Authorization Code with PKCE (Proof Key for Code Exchange) is recommended
+-> PUBLIC CLIENT: We must use Authorization Code Flow with PKCE (Proof Key for Code Exchange) for public client
+ like Single Page Application (Angular, React). Because there is no mechanism in public facing application to
+ securely store `client_secret`
+
+-> SECURE CLIENT: If your login pages are implemented within the web server (using Spring MVC) then we can use
+ Authorization Code Flow by storing `client_secret` within the web server.
+
+FLOW:
+1. client says give me authorization `code`
+2. authorization server says you need to authenticate first
+3. authorization server serves the login page to client for authentication
+4. client enters `username` and `password` to authenticate himself
+5. authorization server validates the user credentials and gives back authorization `code`
+6. now at this point client is authenticated and ready for authorization
+7. client will have `access_token` after authorization
+8. client uses authorization `code` that he got after authentication in order to get the `access_token`
+9. client will get `access_token` and at this client is happily authorized to request its resources
+10. client uses `access_token` in order to get its protected resources
+
+
 
 * Auth Server (KeyCloak): 8083
 * Resource Server: 9091 (this)
@@ -16,8 +35,9 @@ localhost:9091/myLoans
 
 ----------------------------------- well-known openid-configuration ---------------------------------
 ENDPOINTS:
-    1. token: to get the `access_token`
-    2. authorization: to get the authorization `code`
+    1. authorization: to get the authorization `code`
+    2. token: to get the `access_token`
+
 
 INVOKE -> GET -> http://localhost:8083/auth/realms/eazybankdev/.well-known/openid-configuration
 calling Auth Server that is KeyCloak for getting all the well-known endpoints
