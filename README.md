@@ -1,4 +1,4 @@
-# Spring Authorization Server using OAuth Authorization Code Flow Grant Type(Confidential Client)
+# Spring Authorization Server using OAuth Authorization Code Flow Grant Type (Confidential Client)
 
 * Get authorization `code` 
   * copy, paste and hit the url in browser window. It will display login screen
