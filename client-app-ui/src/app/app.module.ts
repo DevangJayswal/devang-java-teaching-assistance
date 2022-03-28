@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER,NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,7 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 // important thing to note that we are not passing any `client_secret`, because
 // we are using Authorization Code Flow with PKCE
+// tslint:disable-next-line:typedef
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
@@ -28,7 +29,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       initOptions: {
         pkceMethod: 'S256',
         redirectUri: 'http://localhost:4200/dashboard'
-      },loadUserProfileAtStartUp: false // if you set this to true, then by default without
+      }, loadUserProfileAtStartUp: false // if you set this to true, then by default without
       // any action from the user the very first page will be landed is login page
     });
 }
