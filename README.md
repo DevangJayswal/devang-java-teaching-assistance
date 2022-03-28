@@ -15,7 +15,7 @@ http://127.0.0.1:8000/oauth2/authorize?response_type=code&client_id=client1&redi
   * Go to POSTMAN -> AUTHORIZATION -> Type: Basic Auth -> Username: `client1`, Password: `myClientSecretValue`
   * Username and Password is basically client_id and client_secret respectively for Basic Auth
   ![img_2.png](README_IMAGES/img_2.png)
-  * Send POST request to `http://127.0.0.1:8000/oauth2/token` using following parameters    
+  * Send POST request to `http://127.0.0.1:8000/oauth2/token` using following parameters
   ![img_1.png](README_IMAGES/img_1.png)
   * for `code` paste the `code` that we have copied from previous step
   ![img_3.png](README_IMAGES/img_3.png)
