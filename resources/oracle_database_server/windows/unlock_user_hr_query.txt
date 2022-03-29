@@ -1,3 +1,0 @@
-connect system;
-enter your password
-ALTER USER hr IDENTIFIED BY oracle ACCOUNT  UNLOCK;
