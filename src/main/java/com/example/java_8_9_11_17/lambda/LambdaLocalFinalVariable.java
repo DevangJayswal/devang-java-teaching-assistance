@@ -1,4 +1,4 @@
-package com.example.java_8_9_11.lambda;
+package com.example.java_8_9_11_17.lambda;
 
 interface Interf {
     void m1();

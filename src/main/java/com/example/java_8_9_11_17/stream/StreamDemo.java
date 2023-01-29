@@ -1,4 +1,4 @@
-package com.example.java_8_9_11.stream;
+package com.example.java_8_9_11_17.stream;
 
 import java.util.Arrays;
 import java.util.List;
