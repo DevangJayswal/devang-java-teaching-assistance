@@ -6,7 +6,7 @@
 
 [Java 8 Optional and NullPointerException](https://github.com/DevangJayswal/devang-java-teaching-assistance/tree/core-java/src/main/java/com/example/java_8_11_17/optional)
 
-[Java Collection](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/resources/durgasoft%20java%20collection.pdf)
+[Java Collection Book](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/resources/durgasoft%20java%20collection.pdf)
 
 [ Check whether number is Prime ](https://github.com/DevangJayswal/devang-java-teaching-assistance/blob/core-java/src/main/java/com/example/Java001PrimeNumber.java)
 
