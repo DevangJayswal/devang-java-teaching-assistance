@@ -1,4 +1,4 @@
-package com.example.java_8_9_11_17.default_method;
+package com.example.java_8_11_17.default_method;
 
 interface Interf{
     default void m1(){

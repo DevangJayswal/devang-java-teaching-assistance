@@ -1,4 +1,4 @@
-package com.example.java_8_9_11_17.functional_interface;
+package com.example.java_8_11_17.functional_interface;
 
 
 // Consumer consume something from us -> get something
