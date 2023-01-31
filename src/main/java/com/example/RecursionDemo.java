@@ -9,7 +9,11 @@ interface Node {
 
 
 /**
- * Question: We need to call Node.getChildren() recursively
+ * Question: Node has one method to get its children i.e. getChildren() which return Iterator<Node>
+ * Node has a method i.e. setProperty(String key, String value) to provide its children.
+ * <br>
+ * TASK: We need to setProperty(String key, String value) of each Node
+ * <br>
  * Asked: Optus
  */
 public class RecursionDemo {
